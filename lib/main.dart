@@ -3,6 +3,7 @@ import 'package:fllutter_demo/search_page.dart';
 import 'package:fllutter_demo/views/like_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(
@@ -19,10 +20,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primaryColor: Colors.blueAccent),
-      home: HomePage(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(primaryColor: Colors.blueAccent),
+        home: HomePage(),
+        // routes: {
+        //   '/': (_) {
+        //     return WebviewScaffold(
+        //       url: 'https://www.baidu.com',
+        //       mediaPlaybackRequiresUserGesture: false,
+        //       appBar: AppBar(
+        //         title: const Text('Widget WebView'),
+        //       ),
+        //       withZoom: true,
+        //       withLocalStorage: true,
+        //       hidden: true,
+        //       initialChild: Container(
+        //         color: Colors.redAccent,
+        //         child: const Center(
+        //           child: Text('Waiting.....'),
+        //         ),
+        //       ),
+        //     );
+        //   },
+        // }
+        );
   }
 }
 
