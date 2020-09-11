@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:fllutter_demo/http.dart';
@@ -89,6 +90,8 @@ class HomePage extends StatelessWidget {
                 Map data = {'username': 'xiaopang1', 'password': '123456'};
                 var res = await httpClient.post(API.login, data: data);
                 print(res);
+                Map ret = json.decode(res.toString());
+                print(ret['data']['token']);
                 DemoDialog.hideLoading(context);
               },
             )
