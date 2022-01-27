@@ -1,15 +1,4 @@
-/*
- * @Author: Ares
- * @Date: 2020-07-16 10:17:35
- * @version: 0.0.1
- * @LastEditors: Ares
- * @LastEditTime: 2020-09-01 18:19:04
- * @Description: 
- * @FilePath: \fllutter_demo\lib\search_page.dart
- */
-import 'package:fllutter_demo/provider/counter.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:loading/loading.dart';
 import 'package:loading/indicator/ball_pulse_indicator.dart';
 

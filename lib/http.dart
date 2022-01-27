@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'config.dart';
 
 abstract class API {
-  static const login = '/customer/login/doLogin'; // 首页顶部导航
+  static const login = '/user/login'; // 首页顶部导航
 }
 
 // http请求

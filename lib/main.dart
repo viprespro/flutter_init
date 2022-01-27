@@ -1,20 +1,11 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:fllutter_demo/http.dart';
-import 'package:fllutter_demo/provider/counter.dart';
-import 'package:fllutter_demo/search_page.dart';
-import 'package:fllutter_demo/service.dart';
-import 'package:fllutter_demo/views/like_item.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:provider/provider.dart';
-
-import 'dialog/loading.dart';
+import 'package:fllutter_demo/provider/counter.dart';
+import './search_page.dart';
+import './views/like_item.dart';
+// import './dialog/loading.dart';
 
 void main() => runApp(MultiProvider(
-      // provider 注册
       providers: [
         ChangeNotifierProvider(create: (_) => Counter()),
       ],
@@ -30,26 +21,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: Colors.blueAccent),
       home: HomePage(),
-      // routes: {
-      //   '/': (_) {
-      //     return WebviewScaffold(
-      //       url: 'https://www.baidu.com',
-      //       mediaPlaybackRequiresUserGesture: false,
-      //       appBar: AppBar(
-      //         title: const Text('Widget WebView'),
-      //       ),
-      //       withZoom: true,
-      //       withLocalStorage: true,
-      //       hidden: true,
-      //       initialChild: Container(
-      //         color: Colors.redAccent,
-      //         child: const Center(
-      //           child: Text('Waiting.....'),
-      //         ),
-      //       ),
-      //     );
-      //   },
-      // }
     );
   }
 }
@@ -61,7 +32,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Example'),
+        title: const Text('Flutter App1'),
       ),
       body: Center(
         child: Column(
@@ -70,31 +41,36 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
             const Count(),
-            RaisedButton(
-              child: Text('点击跳转'),
-              onPressed: () async {
-                // 测试provider状态管理 点击进入即可
-                // Navigator.of(context)
-                //     .push(new MaterialPageRoute(builder: (context) {
-                //   return SearchPage();
-                // }));
-
-                // 测试封装可复用组件
-                // Navigator.of(context)
-                //     .push(new MaterialPageRoute(builder: (context) {
-                //   return LikeItem();
-                // }));
-
-                // 发起dio网络请求
-                DemoDialog.showLoading(context);
-                Map data = {'username': 'xiaopang1', 'password': '123456'};
-                var res = await httpClient.post(API.login, data: data);
-                print(res);
-                Map ret = json.decode(res.toString());
-                print(ret['data']['token']);
-                DemoDialog.hideLoading(context);
-              },
-            )
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(new MaterialPageRoute(builder: (context) {
+                    return SearchPage();
+                  }));
+                },
+                child: Text('test router')),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(new MaterialPageRoute(builder: (context) {
+                    return LikeItem();
+                  }));
+                },
+                child: Text('test defined comp')),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  // do a dio request.
+                },
+                child: Text('test dio request')),
           ],
         ),
       ),
